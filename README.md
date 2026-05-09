@@ -8,7 +8,7 @@ This end-to-end data analytics project demonstrates data extraction, advanced tr
 ## 🛠️ Tools & Technologies Used
 * **SQL:** Data aggregation, Window Functions (`OVER()`, `PARTITION BY`), and Ranking (`DENSE_RANK()`).
 * **Power BI:** Data modeling (Power Query), interactive dashboards, geospatial mapping, and DAX.
-* **Data Source(downloaded from kaggle):** `International_Students_2015_2024_v2.csv` (10,000 records).
+* **Data Source:** Kaggle (`International_Students_2015_2024_v2.csv` - 10,000 records).
 
 ---
 
@@ -22,21 +22,19 @@ This end-to-end data analytics project demonstrates data extraction, advanced tr
 ## 📊 Power BI Dashboard
 The interactive Power BI dashboard provides a high-level overview of global student movement, allowing users to filter by year and region.
 
-![Power BI Dashboard](https://github.com/yashwantmishra08-lgtm/International-student-mobility/blob/main/dashboard/Screenshot%202026-05-09%20192922.png?raw=true)
-*(View the interactive `.pbix` file in the `/dashboard` folder)*
+![Power BI Dashboard](https://github.com/yashwantmishra08-lgtm/International-student-mobility/blob/main/dashboard/Screenshot%202026-05-09%20192922.png)
+
+> 💡 **Note:** There are more dashboard pictures available, including different interactive views and my Power Query data transformation steps. Please look in the `/dashboard` folder to see them all!
 
 ---
 
 ## 💻 SQL Analysis Deep Dive
-Below are highlights of the SQL queries used to extract meaningful business insights from the raw data.
+Below is the SQL code I created to explore the dataset and extract meaningful business insights. 
 
-### 1. The Global Trend: Total Students by Year
-**Objective:** Track the growth of international student mobility over time.
+### 1. Total Students Sent by Every Country of Origin
 ```sql
-SELECT 
-    year, 
-    SUM(count) AS total_student
-FROM
-    international_students_2015_2024_v2
-GROUP BY year
-ORDER BY year;
+select country_of_origin, sum(count) as total_student from international_students_2015_2024_v2
+group by country_of_origin
+order by total_student desc;
+```
+![SQL result](https://github.com/yashwantmishra08-lgtm/International-student-mobility/blob/main/sql_queries/Screenshot%202026-05-10%20002001.png)
